@@ -19,8 +19,6 @@ Este caso de uso é responsável por cadastrar um usuário ao sistema.
 1. No passo (2), se o nome do usuário já existir no sistema, o sistema informa e requisita que outro nome de usuário seja escolhido;
 2. No passo (2), se o email já existir no sistema, o sistema informa e requisita que o usuário tente logar ou recuperar sua conta caso tenha esquecido sua senha.
 
-
-
 ## Efetuar login do usuário
 Este caso de uso é responsável por autenticar um usuário do sistema.
 
@@ -49,7 +47,7 @@ Este caso de uso permite que o usuário pesquise e localize conteúdo específic
 2. O sistema exibe uma interface de busca, onde o usuário pode inserir os critérios de pesquisa, como palavras-chave, título, autor, gênero, etc;
 3. O usuário insere os critérios de pesquisa desejados;
 4. O sistema valida e processa os critérios de pesquisa;
-5. O sistema realiza a busca nos dados do catálogo de conteúdo com base nos critérios fornecidos;
+5. O sistema realiza a busca usando o caso de uso de "Buscar conteúdos", com base nos critérios fornecidos;
 6. O sistema exibe os resultados da busca, apresentando uma lista de conteúdos correspondentes, visualizando títulos, imagens e informações básicas dos conteúdos.
 
 ### Fluxo de eventos secundário:
@@ -78,7 +76,7 @@ Este caso de uso permite que o usuário explore o conteúdo com base em recomend
 **Pós condição**: O usuário explora o conteúdo recomendado.
 
 ### Fluxo de eventos principal:
-1. O sistema exibe uma página com recomendações personalizadas para o usuário;
+1. O sistema exibe uma página com recomendações personalizadas para o usuário, obtendo recomendações através do caso de uso "Recomendar conteúdos" e buscando os conteúdos das recomendações através do caso de uso "Obter conteúdos";
 2. O usuário navega pelas recomendações, visualizando títulos, imagens e informações básicas dos conteúdos recomendados;
 3. O usuário seleciona um conteúdo recomendado para visualizar suas informações detalhadas;
 4. O caso de uso de visualização de conteúdo é iniciado para o conteúdo selecionado.
@@ -100,7 +98,7 @@ Este caso de uso é responsável por gerar recomendações personalizadas para o
 2. O sistema verifica as informações de idade e localidade do usuário.
 Com base nessas informações, o sistema gera recomendações iniciais com conteúdos relevantes para a faixa etária e região do usuário.
 
-## Obter detalhes do conteúdo
+## Obter conteúdos
 Este caso de uso permite que o sistema obtenha informações detalhadas de conteúdos recomendados pelo sistema de recomendação, incluindo filmes, séries, livros, animes e mangás, por meio da integração com sistemas externos, como TMDB, Goodreads e MyAnimeList.
 
 **Pré condição**: O usuário deve estar logado no sistema e ter iniciado o caso de uso de visualização de conteúdo.
@@ -108,11 +106,8 @@ Este caso de uso permite que o sistema obtenha informações detalhadas de conte
 **Pós condição**: O sistema obtém informações atualizadas sobre o conteúdo a partir dos sistemas externos.
 
 ### Fluxo de eventos principal:
-1. O sistema recebe informações básicas do conteúdo;
-2. O sistema identifica o conteúdo específico para o qual as informações detalhadas são necessárias;
-3. Caso seja um livro, o sistema solicita informações detalhadas do conteúdo à API do Goodreads;
-4. Caso seja um filme ou série, o sistema solicita informações detalhadas do conteúdo à API do TMDB;
-5. E caso seja um anime ou mangá, o sistema solicita informações detalhadas do conteúdo à API do MyAnimeList.
+1. O sistema recebe informações básicas dos conteúdos;
+2. O sistema solicita informações detalhadas dos conteúdo às API do TMDB, Goodread e MyAnimeList
 6. O sistema retorna as informações detalhadas do conteúdo.
 
 ### Fluxo de eventos secundário:
