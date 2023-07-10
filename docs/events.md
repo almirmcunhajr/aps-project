@@ -70,7 +70,7 @@ Logo após o sistema exibe uma sessão de reviews, onde o usuário pode ler crí
 4. Ao selecionar um conteúdo o fluxo atual reinicia para o conteúdo selecionado; 
 O usuário pode retornar à página anterior, no estado em que havia deixado.
 
-## Explorar conteúdos
+## Explorar catálogo de conteúdos
 Este caso de uso permite que o usuário explore o conteúdo com base em recomendações personalizadas para o usuário.
 
 **Pré condição**: O usuário deve estar logado no sistema e estar na página de exploração.
