@@ -23,7 +23,7 @@ public class TmdbApi {
         this.apiKey = tmdbConfig.getApiKey();
     }
 
-    public String searchMovie(String query, int page) throws IOException, InterruptedException {
+    public String searchMovies(String query, int page) throws IOException, InterruptedException {
         URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/search/movie")
                 .queryParam("query", query)
                 .queryParam("page", page)
@@ -40,9 +40,43 @@ public class TmdbApi {
         return response.body();
     }
 
-    public String searchTv(String query, int page) throws IOException, InterruptedException {
+    public String searchTvs(String query, int page) throws IOException, InterruptedException {
         URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/search/tv")
                 .queryParam("query", query)
+                .queryParam("page", page)
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public String discoverMovies(String genres, int page) throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/discover/movie")
+                .queryParam("with_genres", genres)
+                .queryParam("page", page)
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public String discoverTvs(String genres, int page) throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/discover/tv")
+                .queryParam("with_genres", genres)
                 .queryParam("page", page)
                 .build()
                 .toUri();

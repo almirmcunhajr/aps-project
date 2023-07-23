@@ -7,7 +7,7 @@ import com.mira.mira.entities.Content;
 import com.mira.mira.controllers.GetContentController;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 public class SearchController {
@@ -19,7 +19,7 @@ public class SearchController {
     }
 
     @GetMapping("/search")
-    public List<Content> search(String query, int page) throws IOException, InterruptedException {
-        return getContentController.getContents(query, page);
+    public ArrayList<Content> search(String query, int page) throws IOException, InterruptedException {
+        return getContentController.search(query, page);
     }
 }

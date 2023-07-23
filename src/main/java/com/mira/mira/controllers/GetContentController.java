@@ -10,7 +10,6 @@ import com.mira.mira.entities.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class GetContentController {
@@ -24,11 +23,20 @@ public class GetContentController {
         this.tvs = tmdbTvs;
     }
 
-    public List<Content> getContents(String query, int page) throws IOException, InterruptedException {
-        List<Content> contents = new ArrayList<>();
+    public ArrayList<Content> search(String query, int page) throws IOException, InterruptedException {
+        ArrayList<Content> contents = new ArrayList<>();
 
-        contents.addAll(movies.getMovies(query, page));
-        contents.addAll(tvs.getTvs(query, page));
+        contents.addAll(movies.search(query, page));
+        contents.addAll(tvs.search(query, page));
+
+        return contents;
+    }
+
+    public ArrayList<Content> discoverByGenre(ArrayList<String> genres, int page) throws IOException, InterruptedException {
+        ArrayList<Content> contents = new ArrayList<>();
+
+        contents.addAll(movies.discoverByGenres(genres, page));
+        contents.addAll(tvs.discoverByGenres(genres, page));
 
         return contents;
     }
