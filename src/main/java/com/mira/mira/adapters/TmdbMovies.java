@@ -59,4 +59,23 @@ public class TmdbMovies implements Movies {
 
         return movies;
     }
+
+    public ArrayList<Movie> getPopular(int page, String region) throws IOException, InterruptedException {
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        String response = tmdbApi.getPopularMovies(page, region);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(response);
+        JsonNode results = root.path("results");
+        for (JsonNode result : results) {
+            Movie movie = new Movie();
+            movie.title = result.path("title").asText();
+            movie.overview = result.path("overview").asText();
+            movie.language = result.path("original_language").asText();
+            movies.add(movie);
+        }
+
+        return movies;
+    }
 }

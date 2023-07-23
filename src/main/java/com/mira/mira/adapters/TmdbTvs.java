@@ -59,4 +59,23 @@ public class TmdbTvs implements Tvs {
 
         return tvs;
     }
+
+    public ArrayList<Tv> getPopular(int page, String region) throws IOException, InterruptedException {
+        ArrayList<Tv> tvs = new ArrayList<>();
+
+        String response = tmdbApi.getPopularTvs(page, region);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(response);
+        JsonNode results = root.path("results");
+        for (JsonNode result : results) {
+            Tv tv = new Tv();
+            tv.title = result.path("title").asText();
+            tv.overview = result.path("overview").asText();
+            tv.language = result.path("original_language").asText();
+            tvs.add(tv);
+        }
+
+        return tvs;
+    }
 }

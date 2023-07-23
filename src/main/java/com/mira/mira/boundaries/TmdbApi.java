@@ -90,4 +90,38 @@ public class TmdbApi {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
+
+    public String getPopularMovies(int page, String region) throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/movie/popular")
+                .queryParam("page", page)
+                .queryParam("region", region)
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public String getPopularTvs(int page, String region) throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/tv/popular")
+                .queryParam("page", page)
+                .queryParam("region", region)
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
 }

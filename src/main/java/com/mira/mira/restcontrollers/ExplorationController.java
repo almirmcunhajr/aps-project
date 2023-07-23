@@ -24,6 +24,10 @@ public class ExplorationController {
     @GetMapping("/explore")
     public ArrayList<Content> explore(int page) throws IOException, InterruptedException {
         ArrayList<String> recommendedGenres = recommendationsController.getRecommendations();
-        return getContentController.discoverByGenre(recommendedGenres, page);
+
+        if (recommendedGenres.isEmpty())
+            return getContentController.getPopular(page, "US");
+        else
+            return getContentController.discoverByGenre(recommendedGenres, page);
     }
 }

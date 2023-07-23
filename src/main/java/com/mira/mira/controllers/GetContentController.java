@@ -40,4 +40,13 @@ public class GetContentController {
 
         return contents;
     }
+
+    public ArrayList<Content> getPopular(int page, String region) throws IOException, InterruptedException {
+        ArrayList<Content> contents = new ArrayList<>();
+
+        contents.addAll(movies.getPopular(page, region));
+        contents.addAll(tvs.getPopular(page, region));
+
+        return contents;
+    }
 }

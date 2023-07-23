@@ -8,4 +8,5 @@ import java.util.ArrayList;
 public interface Tvs {
     public ArrayList<Tv> search(String query, int page) throws IOException, InterruptedException;
     public ArrayList<Tv> discoverByGenres(ArrayList<String> genres, int page) throws IOException, InterruptedException;
+    public ArrayList<Tv> getPopular(int page, String region) throws IOException, InterruptedException;
 }
