@@ -1,4 +1,4 @@
-package com.mira.mira.entities;
+package com.mira.mira.getContent;
 
 public class Movie extends Content {
     public Movie() {

@@ -1,12 +1,9 @@
-package com.mira.mira.controllers;
+package com.mira.mira.getContent;
 
-import com.mira.mira.adapters.TmdbMovies;
-import com.mira.mira.adapters.TmdbTvs;
-import com.mira.mira.interfaces.Movies;
-import com.mira.mira.interfaces.Tvs;
+import com.mira.mira.tmdb.TmdbMoviesService;
+import com.mira.mira.tmdb.TmdbShowsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.mira.mira.entities.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,20 +11,20 @@ import java.util.ArrayList;
 @Component
 public class GetContentController {
 
-    private final Movies movies;
-    private final Tvs tvs;
+    private final MoviesService moviesService;
+    private final ShowsService showsService;
 
     @Autowired
-    public GetContentController (TmdbMovies tmdbMovies, TmdbTvs tmdbTvs) {
-        this.movies = tmdbMovies;
-        this.tvs = tmdbTvs;
+    public GetContentController (TmdbMoviesService tmdbMoviesService, TmdbShowsService tmdbShowsService) {
+        this.moviesService = tmdbMoviesService;
+        this.showsService = tmdbShowsService;
     }
 
     public ArrayList<Content> search(String query, int page) throws IOException, InterruptedException {
         ArrayList<Content> contents = new ArrayList<>();
 
-        contents.addAll(movies.search(query, page));
-        contents.addAll(tvs.search(query, page));
+        contents.addAll(moviesService.search(query, page));
+        contents.addAll(showsService.search(query, page));
 
         return contents;
     }
@@ -35,8 +32,8 @@ public class GetContentController {
     public ArrayList<Content> discoverByGenre(ArrayList<String> genres, int page) throws IOException, InterruptedException {
         ArrayList<Content> contents = new ArrayList<>();
 
-        contents.addAll(movies.discoverByGenres(genres, page));
-        contents.addAll(tvs.discoverByGenres(genres, page));
+        contents.addAll(moviesService.discoverByGenres(genres, page));
+        contents.addAll(showsService.discoverByGenres(genres, page));
 
         return contents;
     }
@@ -44,8 +41,8 @@ public class GetContentController {
     public ArrayList<Content> getPopular(int page, String region) throws IOException, InterruptedException {
         ArrayList<Content> contents = new ArrayList<>();
 
-        contents.addAll(movies.getPopular(page, region));
-        contents.addAll(tvs.getPopular(page, region));
+        contents.addAll(moviesService.getPopular(page, region));
+        contents.addAll(showsService.getPopular(page, region));
 
         return contents;
     }

@@ -1,4 +1,4 @@
-package com.mira.mira.configurations;
+package com.mira.mira.tmdb;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

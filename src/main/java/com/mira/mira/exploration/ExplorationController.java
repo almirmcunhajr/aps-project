@@ -1,16 +1,15 @@
-package com.mira.mira.restcontrollers;
+package com.mira.mira.exploration;
 
-import com.mira.mira.controllers.GetContentController;
-import com.mira.mira.controllers.RecommendationsController;
-import com.mira.mira.entities.Content;
+import com.mira.mira.getContent.GetContentController;
+import com.mira.mira.getContent.Content;
+import com.mira.mira.recommendation.RecommendationsController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-@RestController
+@Component
 public class ExplorationController {
     private final GetContentController getContentController;
     private final RecommendationsController recommendationsController;
@@ -21,9 +20,8 @@ public class ExplorationController {
         this.recommendationsController = recommendationsController;
     }
 
-    @GetMapping("/explore")
     public ArrayList<Content> explore(int page) throws IOException, InterruptedException {
-        ArrayList<String> recommendedGenres = recommendationsController.getRecommendations();
+        ArrayList<String> recommendedGenres = recommendationsController.getRecommendedGenres();
 
         if (recommendedGenres.isEmpty())
             return getContentController.getPopular(page, "US");

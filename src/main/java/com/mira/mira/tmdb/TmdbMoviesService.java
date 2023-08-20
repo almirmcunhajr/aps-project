@@ -1,10 +1,9 @@
-package com.mira.mira.adapters;
+package com.mira.mira.tmdb;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mira.mira.boundaries.TmdbApi;
-import com.mira.mira.entities.Movie;
-import com.mira.mira.interfaces.Movies;
+import com.mira.mira.getContent.Movie;
+import com.mira.mira.getContent.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @Component
-public class TmdbMovies implements Movies {
+public class TmdbMoviesService implements MoviesService {
     private final TmdbApi tmdbApi;
 
     @Autowired
-    public TmdbMovies (TmdbApi tmdbApi) {
+    public TmdbMoviesService(TmdbApi tmdbApi) {
         this.tmdbApi = tmdbApi;
     }
 

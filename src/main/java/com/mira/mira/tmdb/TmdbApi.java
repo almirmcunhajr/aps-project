@@ -1,6 +1,5 @@
-package com.mira.mira.boundaries;
+package com.mira.mira.tmdb;
 
-import com.mira.mira.configurations.TmdbConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
