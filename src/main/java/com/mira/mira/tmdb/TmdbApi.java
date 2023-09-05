@@ -1,6 +1,7 @@
 package com.mira.mira.tmdb;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -124,6 +125,7 @@ public class TmdbApi {
         return response.body();
     }
 
+    @Cacheable("movieGenres")
     public String getMovieGenres() throws IOException, InterruptedException {
         URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/genre/movie/list")
                 .build()
@@ -139,6 +141,7 @@ public class TmdbApi {
         return response.body();
     }
 
+    @Cacheable("tvGenres")
     public String getTVGenres() throws IOException, InterruptedException {
         URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/genre/tv/list")
                 .build()
