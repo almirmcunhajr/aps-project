@@ -6,6 +6,7 @@ public class Content {
     public String language;
     public String type;
     public String genre;
+    public int extId;
 
     public String getTitle() {
         return title;
@@ -24,4 +25,8 @@ public class Content {
     }
 
     public String getGenre() { return this.genre; }
+
+    public int getExtId() {
+        return this.extId;
+    }
 }

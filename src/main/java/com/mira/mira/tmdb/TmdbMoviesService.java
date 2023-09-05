@@ -32,6 +32,7 @@ public class TmdbMoviesService implements MoviesService {
             movie.title = result.path("title").asText();
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
+            movie.extId = result.path("id").asInt();
             movies.add(movie);
         }
 
@@ -53,6 +54,7 @@ public class TmdbMoviesService implements MoviesService {
             movie.title = result.path("title").asText();
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
+            movie.extId = result.path("id").asInt();
             movies.add(movie);
         }
 
@@ -72,6 +74,7 @@ public class TmdbMoviesService implements MoviesService {
             movie.title = result.path("title").asText();
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
+            movie.extId = result.path("id").asInt();
             movies.add(movie);
         }
 

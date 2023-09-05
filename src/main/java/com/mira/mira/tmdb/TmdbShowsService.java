@@ -32,6 +32,7 @@ public class TmdbShowsService implements ShowsService {
             show.title = result.path("title").asText();
             show.overview = result.path("overview").asText();
             show.language = result.path("original_language").asText();
+            show.extId = result.path("id").asInt();
             shows.add(show);
         }
 
@@ -53,6 +54,7 @@ public class TmdbShowsService implements ShowsService {
             show.title = result.path("title").asText();
             show.overview = result.path("overview").asText();
             show.language = result.path("original_language").asText();
+            show.extId = result.path("id").asInt();
             shows.add(show);
         }
 
@@ -72,6 +74,7 @@ public class TmdbShowsService implements ShowsService {
             show.title = result.path("title").asText();
             show.overview = result.path("overview").asText();
             show.language = result.path("original_language").asText();
+            show.extId = result.path("id").asInt();
             shows.add(show);
         }
 
