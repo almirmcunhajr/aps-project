@@ -1,0 +1,43 @@
+
+version: "3"
+services:
+    accounts-service:
+        build:
+            context: ./accounts-service/
+        depends_on:
+            - discovery
+    content-fetch-service:
+        build:
+            context: ./content-fetch-service/
+        depends_on:
+            - discovery
+    content-interaction-service:
+        build:
+            context: ./content-interaction-service/
+        depends_on:
+            - discovery
+    movies-service:
+        build:
+            context: ./movies-service/
+        depends_on:
+            - discovery
+    shows-service:
+        build:
+            context: ./shows-service/
+        depends_on:
+            - discovery
+    signin-service:
+        build:
+            context: ./signin-service/
+        depends_on:
+            - discovery
+    discovery:
+        build:
+            context: ./discovery-server/
+        ports:
+            - "8761:8761"
+    gateway:
+        build:
+            context: ./gateway
+        ports:
+             - "8087:8087"
