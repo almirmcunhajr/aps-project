@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/rup/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/accounts-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/content-fetch-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/content-interaction-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/discovery-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/movies-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/shows-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/soa/signin-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>
