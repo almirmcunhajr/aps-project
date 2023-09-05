@@ -33,6 +33,13 @@ public class TmdbMoviesService implements MoviesService {
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
             movie.extId = result.path("id").asInt();
+
+            ArrayList<Integer> genresIds = new ArrayList<>();
+            for (JsonNode genreId : result.path("genre_ids")) {
+                genresIds.add(genreId.asInt());
+            }
+            movie.genres = getGenresByIds(genresIds);
+
             movies.add(movie);
         }
 
@@ -55,6 +62,13 @@ public class TmdbMoviesService implements MoviesService {
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
             movie.extId = result.path("id").asInt();
+
+            ArrayList<Integer> genresIds = new ArrayList<>();
+            for (JsonNode genreId : result.path("genre_ids")) {
+                genresIds.add(genreId.asInt());
+            }
+            movie.genres = getGenresByIds(genresIds);
+
             movies.add(movie);
         }
 
@@ -75,9 +89,33 @@ public class TmdbMoviesService implements MoviesService {
             movie.overview = result.path("overview").asText();
             movie.language = result.path("original_language").asText();
             movie.extId = result.path("id").asInt();
+
+            ArrayList<Integer> genresIds = new ArrayList<>();
+            for (JsonNode genreId : result.path("genre_ids")) {
+                genresIds.add(genreId.asInt());
+            }
+            movie.genres = getGenresByIds(genresIds);
+
             movies.add(movie);
         }
 
         return movies;
+    }
+
+    public ArrayList<String> getGenresByIds(ArrayList<Integer> ids) throws IOException, InterruptedException {
+        ArrayList<String> genres = new ArrayList<>();
+
+        String response = tmdbApi.getMovieGenres();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode root = objectMapper.readTree(response);
+        JsonNode results = root.path("genres");
+        for (JsonNode result : results) {
+            if (ids.contains(result.path("id").asInt())) {
+                genres.add(result.path("name").asText());
+            }
+        }
+
+        return genres;
     }
 }

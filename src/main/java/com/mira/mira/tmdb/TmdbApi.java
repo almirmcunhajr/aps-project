@@ -123,4 +123,34 @@ public class TmdbApi {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
+
+    public String getMovieGenres() throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/genre/movie/list")
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public String getTVGenres() throws IOException, InterruptedException {
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/genre/tv/list")
+                .build()
+                .toUri();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Authorization", "Bearer " + apiKey)
+                .header("accept", "application/json")
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
 }

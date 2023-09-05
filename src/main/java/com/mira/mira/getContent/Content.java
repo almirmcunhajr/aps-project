@@ -1,11 +1,13 @@
 package com.mira.mira.getContent;
 
+import java.util.ArrayList;
+
 public class Content {
     public String title;
     public String overview;
     public String language;
     public String type;
-    public String genre;
+    public ArrayList<String> genres;
     public int extId;
 
     public String getTitle() {
@@ -24,7 +26,7 @@ public class Content {
         return this.type;
     }
 
-    public String getGenre() { return this.genre; }
+    public ArrayList<String> getGenres() { return this.genres; }
 
     public int getExtId() {
         return this.extId;
