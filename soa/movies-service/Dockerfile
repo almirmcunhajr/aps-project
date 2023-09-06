@@ -6,7 +6,7 @@ COPY src/ src/
 RUN mvn package -Dmaven.test.skip
 
 
-FROM openjdk:11-ea-17-jre-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /home
 COPY --from=base /home/target/*.jar .
 RUN mv `ls -r *.*-SNAPSHOT.jar | head -1` app.jar

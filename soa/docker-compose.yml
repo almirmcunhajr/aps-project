@@ -19,6 +19,8 @@ services:
     movies-service:
         build:
             context: ./movies-service/
+        env_file:
+            - .env
         depends_on:
             - discovery
     shows-service:
@@ -36,8 +38,3 @@ services:
             context: ./discovery-server/
         ports:
             - "8761:8761"
-    gateway:
-        build:
-            context: ./gateway
-        ports:
-             - "8087:8087"
