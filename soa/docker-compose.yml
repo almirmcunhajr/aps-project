@@ -5,42 +5,53 @@ services:
         build:
             context: ./accounts-service/
         depends_on:
-            - discovery
-        network_mode: host
+            - discovery-server
+        networks:
+            - app-network
     content-fetch-service:
         build:
             context: ./content-fetch-service/
         depends_on:
-            - discovery
-        network_mode: host
+            - discovery-server
+        networks:
+            - app-network
     content-interaction-service:
         build:
             context: ./content-interaction-service/
         depends_on:
-            - discovery
-        network_mode: host
+            - discovery-server
+        networks:
+            - app-network
     movies-service:
         build:
             context: ./movies-service/
         env_file:
             - .env
         depends_on:
-            - discovery
-        network_mode: host
+            - discovery-server
+        networks:
+            - app-network
     shows-service:
         build:
             context: ./shows-service/
         depends_on:
-            - discovery
-        network_mode: host
+            - discovery-server
+        networks:
+            - app-network
     signin-service:
         build:
             context: ./signin-service/
         depends_on:
-            - discovery
-        network_mode: host
-    discovery:
+            - discovery-server
+        networks:
+            - app-network
+    discovery-server:
         build:
             context: ./discovery-server/
         ports:
             - "8761:8761"
+        networks:
+            - app-network
+networks:
+    app-network:
+        driver: bridge

@@ -1,6 +1,5 @@
 package com.mira.contentfetchservice;
 
-import com.mira.contentfetchservice.Content;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
