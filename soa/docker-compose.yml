@@ -6,16 +6,19 @@ services:
             context: ./accounts-service/
         depends_on:
             - discovery
+        network_mode: host
     content-fetch-service:
         build:
             context: ./content-fetch-service/
         depends_on:
             - discovery
+        network_mode: host
     content-interaction-service:
         build:
             context: ./content-interaction-service/
         depends_on:
             - discovery
+        network_mode: host
     movies-service:
         build:
             context: ./movies-service/
@@ -23,16 +26,19 @@ services:
             - .env
         depends_on:
             - discovery
+        network_mode: host
     shows-service:
         build:
             context: ./shows-service/
         depends_on:
             - discovery
+        network_mode: host
     signin-service:
         build:
             context: ./signin-service/
         depends_on:
             - discovery
+        network_mode: host
     discovery:
         build:
             context: ./discovery-server/
