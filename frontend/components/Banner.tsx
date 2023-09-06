@@ -22,9 +22,9 @@ const Banner = ({content}: BannerProps) => {
         >
           {content.map((element, index) => {
             return (
-              <Carousel.Item key={element.id}>
+              <Carousel.Item key={element.extId}>
                 <Link
-                  href={`/content/${element.id}`}
+                  href={`/content/${element.extId}`}
                 >
                   <Image className='cursor-pointer'
                     alt={`Imagem banner ${index + 1}`}
